@@ -5,5 +5,6 @@
 * 对前端MVC框架主要是Backbone
 * 熟悉客户端开发，目前负责移动办公OA的APP开发，并已经上线，熟悉H5 Hybrid开发 ，有java开发经验。
 
-### 个人：喜欢看书，喜欢研究一些开源框架的源码，如Underscore，Backbone，Zepto, Express以及公司的内部框架源码，
+### 个人爱好
+喜欢看书，喜欢研究一些开源框架的源码，如Underscore，Backbone，Zepto, Express以及公司的内部框架源码，
 喜欢逛技术论坛，如github,csdn,cnode,segmentfault等
