@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-com></my-com>
+    <my-com2></my-com2>
+    <my-component></my-component>
+    <async-example></async-example>
+</div>
+<script src="//cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+<script>
+
+    Vue.component('my-com', {
+        activate: function (done) {
+            var self = this;
+            $.ajax({
+                url: 'data.json',
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    self.$data = data;
+                    done();
+                }
+            });
+        },
+        template: '<h1>Hello {{name}}</h1>'
+    })
+
+    var myCom2 = Vue.extend({
+        template: '<h1>Hello</h1>'
+    });
+
+    // 在一个步骤中扩展与注册
+    Vue.component('my-component', {
+        template: '<div>A custom component!</div>'
+    })
+
+    Vue.component('my-com2',myCom2);
+
+    Vue.component('async-example', function (resolve, reject) {
+        setTimeout(function () {
+            resolve({
+                activate: function (done) {
+                    console.log('---》wwwwwww');
+                    done();
+                },
+                template: '<div>I am async!</div>'
+            })
+        }, 1000)
+    })
+
+    new Vue({
+        el: '#app'
+
+    });
+</script>
+</body>
+</html>

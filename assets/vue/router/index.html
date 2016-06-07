@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li><a href="#/author/123">#/author</a></li>
+    <li><a href="#/books">#/books</a></li>
+</ul>
+
+<div id="app">
+    <component :is="currentView"></component>
+</div>
+<script src="//cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+<script src="https://rawgit.com/flatiron/director/master/build/director.min.js"></script>
+<script>
+
+    Vue.component('home', {
+        template: '<h1>Hello</h1>'
+    });
+
+    Vue.component('page1', {
+        template: '<h1>world</h1>'
+    });
+
+    var app = new Vue({
+        el: 'html',
+        data: {
+            currentView: 'home'
+        }
+    })
+
+    var router = Router({
+        '/author/:id': function(id){
+            console.log('id:' + id);
+            app.currentView = 'home';
+        },
+        '/books': function(){
+            console.log('book');
+            app.currentView = 'page1';
+        }
+    });
+
+    router.init();
+</script>
+</body>
+</html>

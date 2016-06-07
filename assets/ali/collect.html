@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="click">Collection</div>
+
+<script>
+
+    var click = document.getElementById("click");
+    click.addEventListener("click", function () {
+        /*
+         KeyboardEvent constructor
+         http://www.w3.org/TR/DOM-Level-3-Events/#idl-interface-KeyboardEvent-initializers
+         https://github.com/termi/DOM-Keyboard-Event-Level-3-polyfill
+         */
+        console.log('------>');
+        var keyEvent = new KeyboardEvent("keydown", {
+            bubbles : true,
+            cancelable : true,
+            key: "d",
+            char: "D",
+            keyCode: 68,
+            metaKey: true,
+            ctrlKey: true
+        });
+
+        document.dispatchEvent(keyEvent);
+    });
+
+    document.addEventListener("keydown", function (e) {
+        console.log(e);
+    });
+</script>
+</body>
+</html>

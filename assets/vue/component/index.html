@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <component :is="currentView"></component>
+</div>
+<script src="//cdn.bootcss.com/vue/1.0.24/vue.min.js"></script>
+<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+<script>
+
+    Vue.component('my-com', {
+        activate: function (done) {
+            var self = this;
+            $.ajax({
+                url: 'data.json',
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    self.$data = data;
+                    done();
+                }
+            });
+        },
+        template: '<h1>Hello {{name}}</h1>'
+    })
+
+    Vue.component('home', {
+        template: '<h1>Hello</h1>'
+    });
+
+    Vue.component('page1', {
+        template: '<h1>world</h1>'
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            currentView: 'home'
+        }
+    })
+    // 在路由处理器中切换页面
+    app.currentView = 'page1'
+</script>
+</body>
+</html>
