@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+        html {
+            background-color: #ddd;
+            height: 700px;
+            color: #fff;
+            font-size: 40px;
+        }
+    </style>
+    <script src="zepto.js"></script>
+    <script>
+
+        document.addEventListener('scroll', function (e) {
+            if (document.body.scrollTop === 0) {
+                log('top');
+            }
+        }, false);
+
+        document.addEventListener('touchstart', function (e) {
+            console.log(e);
+            log('touchstart');
+        }, false);
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+            log('touchmove');
+        }, false);
+        document.addEventListener('touchend', function (e) {
+            log('touchend');
+        }, false);
+
+        function log(msg) {
+            $.ajax({
+                url: 'http://10.1.211.142:8000',
+                data: {msg: msg},
+                type: 'get',
+                dataType: 'jsonp'
+            });
+        }
+    </script>
+</head>
+<body>
+<pre>
+    1
+    2
+
+    3
+    4
+    5
+    6
+    7
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+    1
+</pre>
+</body>
+</html>

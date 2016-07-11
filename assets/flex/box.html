@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>弹性盒子display:box</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+        .box {
+            margin: 50px auto;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #dd5555;
+
+
+            /* 伸缩盒子 */
+            display: box;
+            display: -webkit-box;
+            /* 垂直排列 */
+            /*box-orient: vertical;*/
+            /*-webkit-box-orient: vertical;*/
+            /* 相反方向 */
+            -webkit-box-direction: reverse;
+
+            /*-webkit-box-align: stretch;*/
+
+            /*-webkit-box-pack: center*/
+        }
+        .item1 {
+            background-color: #ddd;
+            box-sizing: border-box;
+        }
+        .item2 {
+            background-color: #44DDDD;
+            height: 40px;
+            width: 120px;
+        }
+        .item3 {
+            background-color: #0482ca;
+            height: 50px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    在做手机页面开发中，一直使用弹性盒子布局，这种布局简单快速，且在手机端已经不用担心兼容性问题，
+    display:box和display:flex还是有一定差异性，本篇文章只讲解box。
+    > 父容器上设置box属性
+    在父容器上设置
+    display: box;
+    Webkit内核的浏览器，必须加上-webkit前缀。
+    display: -webkit-box;
+    默认情况下,子容器会从左到右水平排列
+
+    box-orient: vertical;
+    设置该属性可以使子容器从上到下垂直排列
+
+    box-direction: reverse;
+    子容器在水平方向从右向左(就是说最右边的元素排在最左边),垂直方向从下向上(最下面的在最上面)
+
+    box-align: start | end | center | stretch
+    父容器水平排列下 start:上,center:中,end:下,stretch:子容器不设置高度或高度为auto时,子容器会拉伸的和父容器一样高,设置高度同start
+    父容器垂直排列下 start:左,center:中,end:右,stretch:子容器不设置宽度或宽度为auto时,子容器会拉伸的和父容器一样宽,设置宽度同start
+
+    box-pack: start | end | center | justify
+    父容器水平排列下 start:左,center:中,end:右,justify:水平等分父容器宽度
+    父容器垂直排列下 start:上,center:中,end:下,justify:水平等分父容器高度
+
+    > 子容器上设置box-flex属性
+    box-flex: 1;
+    定义子容器占的比例, 具体计算规则,父容器-定宽,剩余的按比例等分。
+    但实际计算中并没有实现等分(子容器中还有元素时),常用的解决方法是,添加宽度百分比
+    .bf-2{
+        box-sizing: border-box;
+        -webkit-box-flex: 2;
+        width: 2%;
+    }
+    .bf-1{
+        box-sizing: border-box;
+        -webkit-box-flex: 1;
+        width: 1%;
+    }
+    这样可以实现bf-2是bf-1的2倍
+    不建议width是一个数值和box-flex一起使用
+
+    > 具体例子
+
+</pre>
+    <div class="box">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>弹性盒子display:flex</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+
+        .row-1 {
+            flex-grow: 1;
+            -webkit-flex-grow: 1;
+            -moz-flex-grow: 1;
+            box-sizing: border-box;
+            width: 1%;
+        }
+
+        .row-2 {
+            flex-grow: 2;
+            -webkit-flex-grow: 2;
+            -moz-flex-grow: 2;
+            box-sizing: border-box;
+            width: 2%;
+        }
+
+        .row-3 {
+            flex-grow: 3;
+            -webkit-flex-grow: 3;
+            -moz-flex-grow: 3;
+            box-sizing: border-box;
+            width: 3%;
+        }
+
+        .row-4 {
+            flex-grow: 4;
+            -webkit-flex-grow: 4;
+            -moz-flex-grow: 4;
+            box-sizing: border-box;
+            width: 4%;
+        }
+
+
+        .col-1 {
+            flex-grow: 1;
+            -webkit-flex-grow: 1;
+            -moz-flex-grow: 1;
+            box-sizing: border-box;
+            height: 1%;
+        }
+
+        .col-2 {
+            flex-grow: 2;
+            -webkit-flex-grow: 2;
+            -moz-flex-grow: 2;
+            box-sizing: border-box;
+            height: 2%;
+        }
+
+        .col-3 {
+            flex-grow: 3;
+            -webkit-flex-grow: 3;
+            -moz-flex-grow: 3;
+            box-sizing: border-box;
+            height: 3%;
+        }
+
+        .col-4 {
+            flex-grow: 4;
+            -webkit-flex-grow: 4;
+            -moz-flex-grow: 4;
+            box-sizing: border-box;
+            wiheightdth: 4%;
+        }
+
+        .uf {
+            /* 伸缩盒子 */
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        .box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            border-bottom: 1px solid #dd5555;
+        }
+
+        .jz {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item1 {
+            background-color: #ddd;
+        }
+
+        .item2 {
+            background-color: #44DDDD;
+        }
+
+        .item3 {
+            background-color: #0482ca;
+        }
+
+        .jgg {
+            margin-top: 120px;
+            margin-left: 50px;
+            border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            width: 500px;
+            height: 500px;
+        }
+        .jgg > div {
+            flex-direction: column;
+        }
+        .jgg > div > div {
+            border-top: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        .jgg > div > div:hover {
+            background-color: #F4F4F4;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #0482ca;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<div class="box uf">
+    <div class="item1 uf row-1 jz">Home</div>
+    <div class="item2 uf row-1 jz">Chat</div>
+    <div class="item3 uf row-1 jz">Me</div>
+</div>
+
+<div class="jgg uf">
+    <div class="uf row-1">
+        <div class="uf col-1 jz"><div class="cell">1</div></div>
+        <div class="uf col-1 jz"><div class="cell">2</div></div>
+        <div class="uf col-1 jz"><div class="cell">3</div></div>
+    </div>
+    <div class="uf row-1">
+        <div class="uf col-1 jz"><div class="cell">4</div></div>
+        <div class="uf col-1 jz"><div class="cell">5</div></div>
+        <div class="uf col-1 jz"><div class="cell">6</div></div>
+    </div>
+    <div class="uf row-1">
+        <div class="uf col-1 jz"><div class="cell">7</div></div>
+        <div class="uf col-1 jz"><div class="cell">8</div></div>
+        <div class="uf col-1 jz"><div class="cell">9</div></div>
+    </div>
+</div>
+</body>
+</html>

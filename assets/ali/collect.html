@@ -7,6 +7,7 @@
 <body>
 <div id="click">Collection</div>
 
+<script src="domevent.js"></script>
 <script>
 
     var click = document.getElementById("click");
@@ -17,17 +18,20 @@
          https://github.com/termi/DOM-Keyboard-Event-Level-3-polyfill
          */
         console.log('------>');
-        var keyEvent = new KeyboardEvent("keydown", {
-            bubbles : true,
-            cancelable : true,
-            key: "d",
-            char: "D",
-            keyCode: 68,
-            metaKey: true,
-            ctrlKey: true
-        });
+//        var keyEvent = new KeyboardEvent("keydown", {
+//            bubbles : true,
+//            cancelable : true,
+//            key: "d",
+//            char: "D",
+//            keyCode: 68,
+//            metaKey: true,
+//            ctrlKey: true
+//        });
+//
+//        document.dispatchEvent(keyEvent);
 
-        document.dispatchEvent(keyEvent);
+        document.dispatchEvent(new KeyboardEvent("keydown", {key: "f", char: "F",keyCode: 68}))
+
     });
 
     document.addEventListener("keydown", function (e) {
