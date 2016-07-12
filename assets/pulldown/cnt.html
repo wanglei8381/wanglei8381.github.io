@@ -18,25 +18,6 @@
     </style>
     <script src="zepto.js"></script>
     <script>
-
-        document.addEventListener('scroll', function (e) {
-            if (document.body.scrollTop === 0) {
-                log('top');
-            }
-        }, false);
-
-        document.addEventListener('touchstart', function (e) {
-            console.log(e);
-            log('touchstart');
-        }, false);
-        document.addEventListener('touchmove', function (e) {
-            e.preventDefault();
-            log('touchmove');
-        }, false);
-        document.addEventListener('touchend', function (e) {
-            log('touchend');
-        }, false);
-
         function log(msg) {
             $.ajax({
                 url: 'http://10.1.211.142:8000',
@@ -45,7 +26,10 @@
                 dataType: 'jsonp'
             });
         }
+
+        var mainContentFrameWrapper = this.top.mainContentFrameWrapper;
     </script>
+    <script src="pull.js"></script>
 </head>
 <body>
 <pre>
