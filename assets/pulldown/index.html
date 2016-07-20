@@ -15,7 +15,6 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: red;
         }
 
         iframe, #mainContentFrameWrapper {
@@ -27,11 +26,25 @@
             left: 0;
         }
 
+        .pull {
+            font-size: 14px;
+            text-align: center;
+            color: #333;
+            position: fixed;
+            width: 100%;
+            line-height: 30px;
+        }
+
+        .pull-up {
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
+<div class="pull pull-down" id="pullDown">下拉刷新</div>
 <div id="mainContentFrameWrapper">
     <iframe src="cnt.html" name="mainContentFrame" frameborder="0"></iframe>
 </div>
+<div class="pull pull-up" id="pullUp">上拉加载</div>
 </body>
 </html>
