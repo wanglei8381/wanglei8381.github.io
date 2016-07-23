@@ -6,6 +6,7 @@ Event.prototype.on = function (name, cb) {
     var events = this._events[name] || [];
     events.push(cb);
     this._events[name] = events;
+    return this;
 };
 
 Event.prototype.add = function (name, cb) {
@@ -14,24 +15,28 @@ Event.prototype.add = function (name, cb) {
     document.addEventListener(name, function (e) {
         cb.call(self, e);
     }, false);
+    return this;
 };
 
 Event.prototype.off = function (name) {
     if (name in this._events) {
         delete this._events[name];
     }
+    return this;
 };
 
 Event.prototype.pause = function (name) {
     if (name in this._events) {
         this._events[name].pause = true;
     }
+    return this;
 };
 
 Event.prototype.resume = function (name) {
     if (name in this._events) {
         this._events[name].pause = false;
     }
+    return this;
 };
 
 Event.prototype.trigger = function (name) {
@@ -47,6 +52,7 @@ Event.prototype.trigger = function (name) {
             }
         });
     }
+    return this;
 };
 
 

@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'iconfont';
-    src: url('//at.alicdn.com/t/font_1468984623_3136122.eot');
-    src: url('//at.alicdn.com/t/font_1468984623_3136122.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1468984623_3136122.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1468984623_3136122.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1468984623_3136122.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1469149972_5600297.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/font_1469149972_5600297.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/font_1469149972_5600297.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/font_1469149972_5600297.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/font_1469149972_5600297.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -32,7 +32,7 @@
 
 @-webkit-keyframes iconfont-loading {
     from {
-        -webkit-transform: rotate(0)
+        -webkit-transform: rotate(0deg)
     }
     to {
         -webkit-transform: rotate(360deg)
@@ -41,7 +41,7 @@
 
 @-moz-keyframes iconfont-loading {
     from {
-        -moz-transform: rotate(0)
+        -moz-transform: rotate(0deg)
     }
     to {
         -moz-transform: rotate(360deg)
@@ -50,7 +50,7 @@
 
 @-o-keyframes iconfont-loading {
     from {
-        -o-transform: rotate(0)
+        -o-transform: rotate(0deg)
     }
     to {
         -o-transform: rotate(360deg)
@@ -59,7 +59,7 @@
 
 @keyframes iconfont-loading {
     from {
-        transform: rotate(0)
+        transform: rotate(0deg)
     }
     to {
         transform: rotate(360deg)

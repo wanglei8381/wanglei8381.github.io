@@ -18,7 +18,6 @@
         }
 
         body {
-            background-color: #00A000;
             font-size: 30px;
         }
 
@@ -46,26 +45,37 @@
             display: block;
         }
 
-        .u-refresh {
+        .rotate-wrapper {
+            transform: scale(0.8);
             position: fixed;
-            left: 0;
-            line-height: 50px;
-            width: 100%;
-            text-align: center;
-            background-color: #fff;
+            left: 50%;
+            top: -80px;
+            width: 50px;
+            height: 50px;
+            margin-left: -25px;
+            border-radius: 50%;
+            box-shadow: 1px 0 1px 1px #E8E8E8, 0 2px 10px 2px #E8E8E8, 0 -1px 1px #E8E8E8, -1px 0 1px #e8e8e8;
         }
 
-        .u-refresh.close {
-            transition: top .5s;
-            top: -50px;
+        .rotate-wrapper.close {
+            transition: all 0.5s;
+            top: -80px;
+            transform: rotate(180deg) scale(0.3);
+        }
+
+        .rotate-wrapper.waiting {
+            transition: top .3s;
+            top: 30px;
         }
     </style>
 </head>
 <body>
-<div class="u-refresh" id="refresh">
-    <i id="iconfontRefresh" class="iconfont refresh">&#xe609;</i>
-    <span id="pullrefresh">下拉刷新</span>
+
+<div class="rotate-wrapper" id="rotateWrapper">
+    <canvas class="rotate" id="rotate" height="50" width="50">
+    </canvas>
 </div>
+
 <ul id="list">
     <li>1</li>
     <li>2</li>
@@ -107,21 +117,85 @@
     });
 
     pullUpDown.on('move', function (distinct) {
-        refresh.style.top = distinct + 'px';
-        iconfontRefresh.style.transform = 'rotate(' + distinct * 3 + 'deg)';
-        if (distinct >= 50) {
-            pullrefresh.innerHTML = '松手刷新';
-        } else {
-            pullrefresh.innerHTML = '下拉刷新';
-        }
+        if (distinct > 95) return;
+        rotateWrapper.setAttribute('class', 'rotate-wrapper');
+        draw(distinct / 30);
+        rotateWrapper.style.top = distinct + 'px';
+        rotate.style.transform = 'rotate(' + distinct * 3 + 'deg)';
     });
+
     pullUpDown.on('end', function (distinct) {
-        refresh.removeAttribute('style');
-        refresh.setAttribute('class', 'u-refresh close');
+        rotateWrapper.removeAttribute('style');
         if (distinct >= 50) {
-            console.log('------->可以刷新');
+            pullUpDown.pause('move').pause('end');
+            window.requestAnimationFrame(draw2);
+            rotateWrapper.setAttribute('class', 'rotate-wrapper waiting');
+
+            setTimeout(function(){
+                rotateWrapper.setAttribute('class', 'rotate-wrapper close');
+            },3000);
+        } else {
+            rotateWrapper.setAttribute('class', 'rotate-wrapper close');
         }
     });
+
+    var i = 0.1
+    var canvas = document.getElementById('rotate');
+    var cxt = canvas.getContext('2d');
+    cxt.strokeStyle = 'red';
+    cxt.fillStyle = 'red';
+    cxt.lineWidth = 3;
+
+    function draw(i) {
+        if (i > 1.8) {
+            return;
+        }
+        cxt.globalAlpha = i / 2;
+        cxt.clearRect(0, 0, 50, 50);
+        cxt.beginPath();
+        cxt.arc(25, 25, 15, 0, i * Math.PI, false);
+        cxt.stroke();
+
+        var x1 = 25 + 15 * Math.cos((i + 0.2) * Math.PI);
+        var y1 = 25 + 15 * Math.sin((i + 0.2) * Math.PI);
+        var x2 = 25 + 10 * Math.cos((i - 0.1) * Math.PI);
+        var y2 = 25 + 10 * Math.sin((i - 0.1) * Math.PI);
+        var x3 = 25 + 20 * Math.cos((i) * Math.PI);
+        var y3 = 25 + 20 * Math.sin((i) * Math.PI);
+        cxt.beginPath();
+        cxt.moveTo(x1, y1);
+        cxt.lineTo(x2, y2);
+        cxt.lineTo(x3, y3);
+        cxt.closePath();
+        cxt.fill();
+    }
+
+    var j = 0;
+    var k = 0;
+    var a = 1;
+    var b;
+    function draw2() {
+        cxt.clearRect(0, 0, 50, 50);
+        cxt.beginPath();
+        cxt.arc(25, 25, 15, k * Math.PI, j * Math.PI, false);
+        cxt.stroke();
+        if (a % 2) {
+            j = j + 0.06;
+            k = k + 0.03;
+        } else {
+            j = j + 0.03;
+            k = k + 0.06;
+        }
+        if (Math.abs(j - k) >= 2) {
+            a++;
+            k = j %= 2;
+        }
+        //cxt.rotate(k * Math.PI);
+        window.requestAnimationFrame(draw2);
+        //window.cancelAnimationFrame(100);
+    }
+
+
 </script>
 </body>
 </html>
