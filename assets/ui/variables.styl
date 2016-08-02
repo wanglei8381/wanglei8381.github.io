@@ -1,1 +1,10 @@
 $gray-base = #027CFF;
+
+//== 添加前缀
+f-prefix(prop, args) {
+  -moz-{prop} args
+  -webkit-{prop} args
+  -ms-{prop} args
+  -o-{prop} args
+  {prop} args
+}
