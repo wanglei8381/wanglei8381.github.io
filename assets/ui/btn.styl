@@ -1,0 +1,48 @@
+$btn-border-color = #ddd;
+
+.btn {
+  display: inline-block;
+  outline: none;
+  line-height: 1.42;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #fff;
+  color: #333;
+  text-decoration none;
+  border: 1px solid $btn-border-color;
+  border-radius $border-radius-base;
+  $user-select(none);
+
+  &:hover {
+    text-decoration none;
+  }
+
+  &.btn-hollow {
+    color $web-color-base
+    border-color $web-color-base
+    &:hover {
+      color #fff
+      background-color $web-color-base
+    }
+  }
+
+  &.btn-active {
+    color #fff
+    border-color $web-color-base
+    background-color $web-color-base
+    &:hover {
+      background-color darken($web-color-base, 20%)
+    }
+  }
+
+  &.btn-disabled {
+    $opacity(.65);
+    cursor: not-allowed;
+  }
+
+  //常用的其他 btn-link, btn-success, btn-primary, btn-warning, btn-danger, btn-royal
+}

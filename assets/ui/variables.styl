@@ -1,10 +1,32 @@
-$gray-base = #027CFF;
+$web-color-base = #027CFF;
+
+$border-radius-base = 4px;
+$border-radius-large = 6px;
+$border-radius-small = 3px;
+
+$support-for-ie = false
 
 //== 添加前缀
-f-prefix(prop, args) {
+$prefix(prop, args) {
   -moz-{prop} args
   -webkit-{prop} args
   -ms-{prop} args
   -o-{prop} args
   {prop} args
+}
+
+//= 用户选中
+$user-select(select) {
+  -webkit-user-select: select;
+  -moz-user-select: select;
+  -ms-user-select: select; // IE10+
+  user-select: select;
+}
+
+//=透明度
+$opacity(opacity) {
+  opacity: opacity;
+  if $support-for-ie {
+    filter: 'alpha(opacity=' + round(opacity * 100) + ')';
+  }
 }
