@@ -1,35 +1,10 @@
-html,
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-p,
-blockquote,
-dl,
-dt,
-dd,
-ul,
-li,
-pre,
-fieldset,
-legend,
-button,
-input,
-textarea,
-form,
-th,
-td {
+* {
   margin: 0;
   padding: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
   box-sizing: border-box;
 }
 html {
@@ -52,6 +27,33 @@ h6 {
 table {
   border-collapse: collapse;
   border-spacing: 0px;
+}
+img {
+  vertical-align: middle;
+}
+a {
+  color: #027cff;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #027cff;
+  text-decoration: underline;
+}
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+input,
+textarea {
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid #ddd;
+/*&:focus {
+    border-color $web-color-base
+  }*/
 }
 .clearfix:after {
   content: " ";
@@ -155,7 +157,7 @@ table {
   margin-top: -4px;
   margin-left: -6px;
   width: 12px;
-  height: 4px;
+  height: 6px;
   border-bottom: 2px solid #fff;
   border-left: 2px solid #fff;
   -moz-transform: rotate(-45deg);
