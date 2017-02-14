@@ -1,0 +1,47 @@
+/*
+	1.定位（position、left、right、top、bottom、z-index）
+	2.盒子模型（display、float、width、height、margin、padding、border、border-radius）
+	3.排印（font、color、background、line-height、text-align）
+*/
+
+/* bad */
+.mod-example {
+  font: normal 13px "Helvetica Neue", sans-serif;
+  display: block;
+  position: absolute;
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* good */
+.mod-example {
+  /* 定位 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  /* 盒模型 */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin: 15px auto;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  /* 排印 */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f5f5f5;
+  text-align: center;
+}
